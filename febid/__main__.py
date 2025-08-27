@@ -38,7 +38,7 @@ def start_no_ui(config_f=None):
     :param config_f: configuration file
     :return:
     """
-    Starter(config_f).start()
+    Starter(filename=config_f).start()
 
 
 def welcome():
