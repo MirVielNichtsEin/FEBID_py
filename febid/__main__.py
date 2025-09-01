@@ -31,14 +31,18 @@ def start_ui(config_f=None):
     ui_shell.start(config_f)
 
 
-def start_no_ui(config_f=None):
+def start_no_ui(config_f=None, wait_for_sim=True):
     """
     Start FEBID without graphical user interface.
 
     :param config_f: configuration file
+    :param wait_for_sim: toggle, if script shouldn't wait for simulation
     :return:
     """
-    Starter(config_f).start()
+    process_obj, sim, thread = Starter(config_f).start()
+    if wait_for_sim:
+        thread.join()
+    return thread
 
 
 def welcome():
